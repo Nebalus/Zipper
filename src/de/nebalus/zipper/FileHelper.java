@@ -14,7 +14,6 @@ public class FileHelper
 
 			for (File i : directory.listFiles()) {
 				if (i.isDirectory()) {
-					System.out.println("TEST");
 					if (i.listFiles() == null && i.listFiles().length == 0) {
 						fileList.add(i);
 					} else {

@@ -2,13 +2,13 @@ package de.nebalus.zipper;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+
+import de.nebalus.zipper.utils.FileHelper;
 
 public class ZipLib 
 {
@@ -35,16 +35,19 @@ public class ZipLib
 		
         int counter = 1;
         
+        int subpath = inputFile.getAbsolutePath().length() + 1;
+        
 		for(File file : fileList)
 		{
 			System.out.println(counter + "/" + fileList.size() + " ZIPPING: " + file.getAbsolutePath());
 			
 			FileInputStream fis = new FileInputStream(file);
-			ZipEntry zipEntry = new ZipEntry(counter + "");
+			ZipEntry zipEntry = new ZipEntry(file.getAbsolutePath().substring(subpath));
 			zipOut.putNextEntry(zipEntry);
 	        byte[] bytes = new byte[1024];
 	        int length;
-	        while ((length = fis.read(bytes)) >= 0) {
+	        while ((length = fis.read(bytes)) >= 0) 
+	        {
 	            zipOut.write(bytes, 0, length);
 	        }
 	        fis.close();

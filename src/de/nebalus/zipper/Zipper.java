@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import de.nebalus.zipper.configuration.Config;
+
 public class Zipper 
 {
 
@@ -17,7 +19,14 @@ public class Zipper
 		System.out.println("#+#           #+#     #+#        #+#        #+#        #+#    #+#");
 		System.out.println("######### ########### ###        ###        ########## ###    ###");
 		System.out.println(" ");
+		System.out.println("BUILD: " + Config.BUILD_VERSION);
+		System.out.println("BUILD-DATE: " + Config.BUILD_DATE);
+		System.out.println("AUTHOR: " + Config.AUTHOR_NAME);
+		System.out.println("GITHUB-REPO: " + Config.GITHUB_REPO_LINK);
+		System.out.println(" ");
+		System.out.println("Checking the Parameters...");
 		
+		//Init default variablen
 		ZipMode zipMode = ZipMode.UNDEFINED;
 		File inputFile = null;
 		File outputFile = null;
@@ -57,17 +66,17 @@ public class Zipper
 			System.err.println("Please use the right syntax... needed arguments (from, to, mode)");
 			return;
 		}
-
-		System.out.println("BUILD: 0.1 BETA");
-		System.out.println("AUTHOR: Nebalus");
+		
 		System.out.println("MODE: " + zipMode.name());
 		System.out.println("FROMPATH: " + inputFile.getAbsolutePath());
 		System.out.println("TOPATH: " + outputFile.getAbsolutePath() + (outputFile.getParentFile().exists() ? "" : " (The directory '" + outputFile.getParentFile().getAbsolutePath() + "' will be created)") );
 		System.out.println(" ");
-		System.out.println("The procces will start in 10 seconds...");
+		System.out.println("The procces will start in " + Config.MODE_START_DELAY + " seconds...");
 		
-		TimeUnit.SECONDS.sleep(10);
+		TimeUnit.SECONDS.sleep(Config.MODE_START_DELAY);
 		
 		ZipLib.zip(inputFile, outputFile);
 	}
+	
+	
 }

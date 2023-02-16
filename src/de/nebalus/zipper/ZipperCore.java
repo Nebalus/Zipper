@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.nebalus.zipper.configuration.Config;
 
-public class Zipper 
+public class ZipperCore 
 {
 
 	public static void main(String[] args) throws InterruptedException, IOException 
@@ -74,7 +74,7 @@ public class Zipper
 		System.out.println("The procces will start in " + Config.MODE_START_DELAY + " seconds...");
 		
 		TimeUnit.SECONDS.sleep(Config.MODE_START_DELAY);
-		
+	
 		ZipLib.zip(inputFile, outputFile);
 	}
 	

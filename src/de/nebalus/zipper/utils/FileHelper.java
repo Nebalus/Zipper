@@ -11,33 +11,15 @@ public class FileHelper
 
 		if(directory.isDirectory()) 
 		{
-			ArrayList<File> longCache = new ArrayList<File>();
-
-			for (File file : directory.listFiles()) 
-			{
-				if (file.isDirectory()) 
-				{
-					if (file.listFiles() == null && file.listFiles().length == 0) 
-					{
-						fileList.add(file);
-					} 
-					else 
-					{
-						longCache.add(file);
-					}
-				} 
-				else if (file.isFile())
-				{
-					fileList.add(file);
-				}
-			}
+			ArrayList<File> longTermCache = new ArrayList<File>();			
+			longTermCache.add(directory);
 
 			do 
 			{
-				ArrayList<File> shortCache = new ArrayList<File>();
-				for (File i : longCache) 
+				ArrayList<File> shortTermCache = new ArrayList<File>();
+				for (File i : longTermCache) 
 				{
-					if (i.listFiles() == null && i.listFiles().length == 0) 
+					if (i.isFile() || i.listFiles() == null || i.listFiles().length == 0) 
 					{
 						fileList.add(i);
 					} 
@@ -51,16 +33,15 @@ public class FileHelper
 							} 
 							else 
 							{
-								shortCache.add(i1);
+								shortTermCache.add(i1);
 							}
 						}
 					}
 				}
 
-				longCache.clear();
-				longCache.addAll(shortCache);
+				longTermCache = shortTermCache;
 			} 
-			while (!longCache.isEmpty());
+			while (!longTermCache.isEmpty());
 
 		}
 		return fileList;

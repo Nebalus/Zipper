@@ -39,6 +39,12 @@ public class ZipLib
         
 		for(File file : fileList)
 		{
+			if(file.isDirectory() && file.listFiles() == null)
+			{
+				System.out.println(counter + "/" + fileList.size() + " SKIPING: " + file.getAbsolutePath());
+				continue;
+			}
+			
 			System.out.println(counter + "/" + fileList.size() + " ZIPPING: " + file.getAbsolutePath());
 			
 			FileInputStream fis = new FileInputStream(file);

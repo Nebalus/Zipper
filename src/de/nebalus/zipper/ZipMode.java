@@ -6,11 +6,16 @@ public enum ZipMode
 	UNZIP("unzip"),
 	UNDEFINED();
 	
-	private String[] aliases;
+	private final String[] aliases;
 	
 	ZipMode(String... aliases)
 	{
 		this.aliases = aliases;
+	}
+	
+	public String[] getAliases()
+	{
+		return aliases;
 	}
 	
 	public static ZipMode getFromAlias(String selAlias)
@@ -24,8 +29,7 @@ public enum ZipMode
 					return zipMode;
 				}
 			}
-		}
-		
+		}	
 		return UNDEFINED;
 	}
 }

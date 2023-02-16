@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import de.nebalus.zipper.configuration.Config;
+import de.nebalus.zipper.modules.ZipModule;
 
 public class ZipperCore 
 {
@@ -75,7 +76,9 @@ public class ZipperCore
 		
 		TimeUnit.SECONDS.sleep(Config.MODE_START_DELAY);
 	
-		ZipLib.zip(inputFile, outputFile);
+		Thread instance = new ZipModule(inputFile, outputFile);
+		instance.run();
+		//ZipLib.zip(inputFile, outputFile);
 	}
 	
 	

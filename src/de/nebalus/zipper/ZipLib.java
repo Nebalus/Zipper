@@ -13,7 +13,7 @@ import de.nebalus.zipper.utils.FileHelper;
 public class ZipLib 
 {
 	public static void zip(File inputFile, File outputFile) throws IOException
-	{
+	{	
 		final ArrayList<File> fileList = new ArrayList<>();
 		
 		System.out.println("Looking up the file structure...");
@@ -28,13 +28,15 @@ public class ZipLib
 		}
 		
 		System.out.println(fileList.size() + " files found!");
-		System.out.println("Starting the ZIP procces");
+		
+		final Long procces_timestamp = System.currentTimeMillis();
+		
+		System.out.println("Starting the ZIP procces...");
 		
 		FileOutputStream fos = new FileOutputStream(outputFile);
         ZipOutputStream zipOut = new ZipOutputStream(fos);
 		
         int counter = 1;
-        
         int subpath = inputFile.getAbsolutePath().length() + 1;
         
 		for(File file : fileList)
@@ -63,5 +65,7 @@ public class ZipLib
 		
 		zipOut.close();
 		fos.close();
+		
+		System.out.println("ZIP Procces is successfuly finished (" + (System.currentTimeMillis() - procces_timestamp) + "ms)");
 	}
 }

@@ -1,4 +1,4 @@
-#⚠️WARNING!!!⚠️ This program is still in development **PreAlpha** phase
+# ⚠️WARNING!!!⚠️ This program is still in development **PreAlpha** phase
 
 # Zipper
  

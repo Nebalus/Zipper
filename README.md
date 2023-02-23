@@ -6,7 +6,7 @@ A modular Java program that can Zip/Unzip/~~Encript/Decript~~ a file or director
 
 ## Info
 
-At least **Java 8** must be installed on the Host Computer to be able to run
+At least **Java 7** must be installed on the Host Computer to be able to run
 
 ## Usage
 

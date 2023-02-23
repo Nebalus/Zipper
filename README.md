@@ -1,3 +1,5 @@
+#⚠️WARNING!!!⚠️ This program is still in development **PreAlpha** phase
+
 # Zipper
  
 A modular Java program that can Zip/Unzip/~~Encript/Decript~~ a file or directory
